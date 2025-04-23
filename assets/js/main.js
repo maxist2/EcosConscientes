@@ -204,4 +204,32 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.addEventListener('input', actualizarContador);
         actualizarContador(); // Inicializar
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar nombre del usuario si está autenticado
+        const usuarioInfo = document.getElementById('usuario-info');
+        const nombreUsuario = document.getElementById('nombre-usuario');
+        const cerrarSesionBtn = document.getElementById('cerrar-sesion');
+        const loginBtn = document.getElementById('login-btn');
+    
+        // Obtener el nombre del usuario desde localStorage
+        const usuario = localStorage.getItem('usuario');
+    
+        if (usuario) {
+            // Mostrar el contenedor de usuario y ocultar el botón de iniciar sesión
+            usuarioInfo.style.display = 'flex';
+            nombreUsuario.textContent = `Hola, ${usuario}`;
+            loginBtn.style.display = 'none';
+        } else {
+            // Si no hay usuario, mostrar el botón de iniciar sesión y ocultar el contenedor de usuario
+            usuarioInfo.style.display = 'none';
+            loginBtn.style.display = 'inline-block';
+        }
+    
+        // Manejar cierre de sesión
+        cerrarSesionBtn.addEventListener('click', function() {
+            localStorage.removeItem('usuario'); // Eliminar el usuario del almacenamiento local
+            window.location.reload(); // Recargar la página para actualizar la interfaz
+        });
+    });
 });

@@ -47,38 +47,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Validación del formulario
-    const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const userType = document.getElementById('user-type').value;
-            const requiredFields = ['documento', 'password'];
-            
-            if (userType === 'admin') {
-                requiredFields.push('codigo-empleado', 'departamento');
-            }
-            
-            // Validar campos requeridos
-            for (const fieldId of requiredFields) {
-                const field = document.getElementById(fieldId);
-                if (!field.value.trim()) {
-                    mostrarAlerta(`Por favor complete el campo ${field.labels[0].textContent}`, 'error');
-                    field.focus();
-                    return;
+        // Validación del formulario
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+    
+                const userType = document.getElementById('user-type').value;
+                const nombreUsuario = "Usuario Administrativo"; // Cambiar según el nombre real del usuario
+                const requiredFields = ['documento', 'password'];
+    
+                if (userType === 'admin') {
+                    requiredFields.push('codigo-empleado', 'departamento');
                 }
-            }
-            
-            // Simular autenticación
-            mostrarAlerta('Autenticando...', 'success');
-            setTimeout(() => {
-                window.location.href = userType === 'admin' 
-                    ? 'admin/dashboard.html' 
-                    : 'perfil.html';
-            }, 1500);
-        });
-    }
+    
+                // Validar campos requeridos
+                for (const fieldId of requiredFields) {
+                    const field = document.getElementById(fieldId);
+                    if (!field.value.trim()) {
+                        mostrarAlerta(`Por favor complete el campo ${field.labels[0].textContent}`, 'error');
+                        field.focus();
+                        return;
+                    }
+                }
+    
+                // Simular autenticación
+                mostrarAlerta('Autenticando...', 'success');
+                setTimeout(() => {
+                    if (userType === 'natural') {
+                        localStorage.setItem('usuario', 'Persona Natural');
+                        window.location.href = 'index.html';
+                    } else if (userType === 'admin') {
+                        localStorage.setItem('usuario', nombreUsuario);
+                        window.location.href = 'admin-dashboard.html';
+                    }
+                }, 1500);
+            });
+        }
     
     function mostrarAlerta(mensaje, tipo) {
         const alertaExistente = document.querySelector('.alerta');
