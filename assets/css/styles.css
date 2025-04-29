@@ -1317,3 +1317,70 @@ section.visible .fade-in {
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         background-color: var(--color-accent);
     }
+
+    /* Estilos para el formulario de registro de pacientes */
+    .registro-container {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+        background-color: #f5f9f8;
+    }
+
+    .registro-form {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .registro-form h2 {
+        text-align: center;
+        color: var(--color-primary);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    .registro-form h2 i {
+        margin-right: 10px;
+    }
+    /* Estilos para la tabla de registros */
+    .registro-tabla {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .registro-tabla input {
+        margin-bottom: 15px;
+        padding: 10px;
+        width: 50%;
+        border: 1px solid var(--color-secondary);
+        border-radius: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    table th, table td {
+        border: 1px solid var(--color-secondary);
+        padding: 10px;
+        text-align: left;
+    }
+
+    table th {
+        background-color: var(--color-primary);
+        color: var(--color-light);
+    }
+
+    table tr:nth-child(even) {
+        background-color: var(--color-light);
+    }

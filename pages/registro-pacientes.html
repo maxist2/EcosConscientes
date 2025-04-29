@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pacientes - Ecos Conscientes</title>
+    <link rel="icon" type="image/svg+xml" href="/EcosConscientes/assets/images/LOGO_fond.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/EcosConscientes/assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/EcosConscientes/assets/images/LOGO.svg" alt="Logo Ecos Conscientes" id="logo">
+                <span class="logo-text">Ecos Conscientes</span>
+            </div>
+            <a href="admin-dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+        </nav>
+    </header>
+
+    <main class="registro-container">
+        <div class="registro-form">
+            <h2><i class="fas fa-user-plus"></i> Registro de Pacientes</h2>
+            <form id="registroPacientesForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required 
+                           pattern="[A-Za-zÁáÉéÍíÓóÚúÑñ\s]{2,50}" 
+                           title="Solo letras y espacios, mínimo 2 caracteres">
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required 
+                           pattern="[A-Za-zÁáÉéÍíÓóÚúÑñ\s]{2,50}" 
+                           title="Solo letras y espacios, mínimo 2 caracteres">
+                </div>
+
+                <div class="form-group">
+                    <label for="cedula">Cédula:</label>
+                    <input type="text" id="cedula" name="cedula" required 
+                           pattern="[0-9]{6,12}" 
+                           title="6-12 dígitos numéricos">
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo">Motivo de Consulta:</label>
+                    <textarea id="motivo" name="motivo" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-usuario">Tipo de Usuario:</label>
+                    <select id="tipo-usuario" name="tipo-usuario" required>
+                        <option value="">Seleccione...</option>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="docente">Docente</option>
+                        <option value="administrativo">Administrativo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha-consulta">Fecha de Consulta:</label>
+                    <input type="date" id="fecha-consulta" name="fecha-consulta" required>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Registrar Paciente
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <div class="registro-tabla">
+        <h3>Registros de Pacientes</h3>
+        <input type="text" id="buscarCedula" placeholder="Buscar por cédula">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cédula</th>
+                    <th>Motivo</th>
+                    <th>Tipo de Usuario</th>
+                    <th>Fecha de Consulta</th>
+                </tr>
+            </thead>
+            <tbody id="tablaRegistros">
+                <!-- Los registros se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/EcosConscientes/assets/js/registro-pacientes.js"></script>
+</body>
+</html>
