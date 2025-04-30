@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Ecos Conscientes</title>
+    <link rel="icon" type="image/svg+xml" href="/EcosConscientes/assets/images/LOGO_fond.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/EcosConscientes/assets/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/EcosConscientes/assets/images/LOGO.svg" alt="Logo Ecos Conscientes" id="logo">
+                <span class="logo-text">Ecos Conscientes</span>
+            </div>
+            <a href="admin-dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+        </nav>
+    </header>
+
+    <main class="agenda-container">
+        <h1>Agenda</h1>
+
+        <!-- Visualización de citas -->
+        <section id="visualizacion-citas">
+            <h2><i class="fas fa-calendar-alt"></i> Visualización de Citas</h2>
+            <div id="calendar"></div> <!-- Contenedor del calendario -->
+        </section>
+
+        <!-- Subapartado: Seguimiento -->
+        <section id="seguimiento">
+            <h2><i class="fas fa-user-check"></i> Seguimiento (Recepcionistas)</h2>
+            <form id="seguimientoForm">
+                <div class="form-group">
+                    <label for="cedula-usuario">Cédula del Usuario:</label>
+                    <input type="text" id="cedula-usuario" name="cedula-usuario" required 
+                        pattern="[0-9]{6,12}" 
+                        title="6-12 dígitos numéricos">
+                </div>
+                <div class="form-group">
+                    <label for="servicio-utilizado">Servicio Utilizado:</label>
+                    <select id="servicio-utilizado" name="servicio-utilizado" required>
+                        <option value="">Seleccione...</option>
+                        <option value="consulta">Consulta Psicológica</option>
+                        <option value="triaje">Triaje</option>
+                        <option value="bateria-pruebas">Batería de Pruebas</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Registrar Seguimiento
+                </button>
+            </form>
+            <div class="seguimiento-tabla">
+                <h3>Historial de Servicios Utilizados</h3>
+                <input type="text" id="buscarSeguimiento" placeholder="Buscar por cédula">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Servicio</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaSeguimiento">
+                        <!-- Los registros se agregarán aquí dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Subapartado: Historial Clínico -->
+        <section id="historial-clinico">
+            <h2><i class="fas fa-notes-medical"></i> Historial Clínico (Psicólogos)</h2>
+            <form id="historialClinicoForm">
+                <div class="form-group">
+                    <label for="cedula-clinico">Cédula del Usuario:</label>
+                    <input type="text" id="cedula-clinico" name="cedula-clinico" required 
+                        pattern="[0-9]{6,12}" 
+                        title="6-12 dígitos numéricos">
+                </div>
+                <div class="form-group">
+                    <label for="anotaciones">Anotaciones:</label>
+                    <textarea id="anotaciones" name="anotaciones" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Guardar Anotaciones
+                </button>
+            </form>
+            <div class="historial-tabla">
+                <h3>Historial Clínico</h3>
+                <input type="text" id="buscarHistorial" placeholder="Buscar por cédula">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Anotaciones</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaHistorialClinico">
+                        <!-- Los registros se agregarán aquí dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="/EcosConscientes/assets/js/agenda.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+</body>
+</html>
