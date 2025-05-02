@@ -89,13 +89,61 @@ document.addEventListener('DOMContentLoaded', function() {
    
     // Inicializar FullCalendar
     const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'timeGridWeek', // Vista semanal
+        initialView: 'timeGridWeek',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
             right: 'timeGridWeek,timeGridDay'
         },
-        locale: 'es', // Idioma español
+        locale: 'es',
+        slotLabelFormat: {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        },
+        themeSystem: 'standard',
+        height: 'auto',
+        contentHeight: 'auto',
+        handleWindowResize: true,
+        dayMaxEvents: true,
+        eventColor: '#2D685C',
+        eventTextColor: '#FBFBEB',
+        eventBorderColor: '#94C4B2',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'timeGridWeek,timeGridDay,listWeek'
+        },
+        buttonText: {
+            today: 'Hoy',
+            week: 'Semana',
+            day: 'Día',
+            listWeek: 'Lista'
+        },
+        views: {
+            timeGridWeek: {
+                titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
+            },
+            timeGridDay: {
+                titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
+            },
+            listWeek: {
+                titleFormat: { year: 'numeric', month: 'long' }
+            }
+        },
+        slotMinTime: '08:00:00',
+        slotMaxTime: '20:00:00',
+        allDaySlot: false,
+        slotEventOverlap: true,
+        nowIndicator: true,
+        views: {
+            timeGridWeek: {
+                titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
+            },
+            timeGridDay: {
+                titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
+            }
+        },
         events: [
             {
                 title: 'Consulta Psicológica',
