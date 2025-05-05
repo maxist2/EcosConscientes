@@ -633,6 +633,196 @@ footer {
     padding: 60px 20px;
 }
 
+.footer-founders {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.footer-founders h4 {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.founders-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.founder {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    min-height: 130px;
+    justify-content: space-evenly;
+}
+
+.founder:hover {
+    transform: scale(1.05);
+}
+@media (max-width: 768px) {
+    .founders-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 300px;
+    }
+
+    .founder {
+        min-height: 130px;
+    }
+
+    .founder:hover .FounderImg {
+        transform: scale(2.5);
+        top: 15%;
+    }
+
+    .FounderImg {
+        width: 35px;
+        height: 35px;
+    }
+
+    .founder h5 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .founders-container {
+        max-width: 250px;
+    }
+
+    .founder:hover .FounderImg {
+        transform: scale(2);
+        top: 10%;
+    }
+
+    .FounderImg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .founder h5 {
+        font-size: 0.9rem;
+    }
+}
+.founder:hover .FounderImg {
+    position: relative;
+    transform: scale(3);
+    top: 20%;
+    border-radius: 5px;
+    overflow: hidden;
+    animation: founderHover 0.4s ease-in-out;
+}
+
+.founder:hover h5 {
+    color: transparent;
+    animation: textFade 0.4s ease-in-out;
+}
+
+.founder:not(:hover) .FounderImg {
+    animation: founderUnhover 0.5s ease-in-out;
+}
+
+.founder:not(:hover) h5 {
+    animation: textUnfade 0.5s ease-in-out;
+}
+
+@keyframes founderHover {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 1;
+    }
+}
+
+@keyframes founderUnhover {
+    0% {
+        transform: scale(3);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes textFade {
+    0% {
+        opacity: 1;
+        color: #fff;
+    }
+    100% {
+        opacity: 0;
+        color: transparent;
+    }
+}
+
+@keyframes textUnfade {
+    0% {
+        opacity: 0;
+        color: transparent;
+    }
+    100% {
+        opacity: 1;
+        color: #fff;
+    }
+}
+
+
+
+
+.founder:hover .FSvg {
+    display: none;
+}
+
+.FounderImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+img .FImg{
+    width: 100%;
+    height: 100%;
+    object-fit:fill ;
+}
+.founder:hover h5 {
+    color: transparent;
+}
+
+.FounderImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.founder h5 {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.founder p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0px;
+}
+
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -643,7 +833,6 @@ footer {
 
 .footer-logo h3 {
     color: var(--color-light);
-    margin-bottom: 15px;
     letter-spacing: 3px;
 }
 
@@ -660,7 +849,6 @@ footer {
 .footer-links a {
     color: var(--color-light);
     text-decoration: none;
-    margin-bottom: 15px;
     transition: color 0.3s, transform 0.3s;
     display: inline-block;
 }
