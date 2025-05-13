@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🏥 EcosConscientes
 
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green.svg)
@@ -12,7 +12,6 @@
 ## 📌 Índice
 
 * [🏥 Sobre el Proyecto](#-sobre-el-proyecto)
-=======
 ¡Claro! Aquí tienes una versión mejorada y decorada del README para tu proyecto **EcosConscientes**, utilizando elementos visuales como badges, emojis, secciones bien estructuradas y enlaces útiles. Esta versión está optimizada para GitHub y sigue las buenas prácticas de documentación.
 
 ---
@@ -30,14 +29,13 @@
 ## 📌 Índice
 
 * [🌱 Sobre el Proyecto](#-sobre-el-proyecto)
->>>>>>> 0f6cbe1c483671c063ce4056580d767dce10b7cc
 * [✨ Características Principales](#-características-principales)
 * [🛠️ Tecnologías Utilizadas](#-tecnologías-utilizadas)
 * [🚀 Cómo Empezar](#-cómo-empezar)
 * [🤝 Contribuciones](#-contribuciones)
 * [📄 Licencia](#-licencia)
 * [📬 Contacto](#-contacto)
-<<<<<<< HEAD
+
 
 ---
 
@@ -93,7 +91,7 @@
 4. Sube tus cambios (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
-=======
+
 
 ---
 
@@ -160,7 +158,7 @@
 
 Por favor, asegúrate de seguir las [buenas prácticas de contribución](https://docs.github.com/es/get-started/quickstart/contributing-to-projects) antes de enviar tu PR.
 
->>>>>>> 0f6cbe1c483671c063ce4056580d767dce10b7cc
+
 ---
 
 ## 📄 Licencia
@@ -171,14 +169,13 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 
 ## 📬 Contacto
 
-<<<<<<< HEAD
 * ✉️ Email: [contacto@ecosconscientes.com](mailto:contacto@ecosconscientes.com)
 * 🌐 Sitio web: [www.ecosconscientes.com](https://www.ecosconscientes.com)
 
 ---
 
 ¡Gracias por contribuir a mejorar la atención médica! 🏥💚
-=======
+
 * ✉️ Correo: [contacto@ecosconscientes.org](mailto:contacto@ecosconscientes.org)
 * 🌐 Sitio web: [www.ecosconscientes.org](https://www.ecosconscientes.org)
 * 🐦 Twitter: [@EcosConscientes](https://twitter.com/EcosConscientes)
@@ -195,7 +192,4 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 * [Plantillas de README asombrosas en español](https://github.com/minoveaz/github-perfil-readme-asombrosos)
 * [Cómo personalizar tu perfil de GitHub con un archivo README](https://dev.to/alextomas80/como-personalizar-tu-perfil-github-con-un-archivo-readme-5754)
 
----
 
-¿Te gustaría agregar alguna imagen, GIF o sección adicional? Estoy aquí para ayudarte a personalizar aún más tu README.
->>>>>>> 0f6cbe1c483671c063ce4056580d767dce10b7cc
