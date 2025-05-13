@@ -1,21 +1,3 @@
-
-# 🏥 EcosConscientes
-
-![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green.svg)
-![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow)
-![Contribuciones Bienvenidas](https://img.shields.io/badge/Contribuciones-Bienvenidas-brightgreen)
-
-> *Sistema de Gestión Médica Integral para una atención eficiente y organizada.*
-
----
-
-## 📌 Índice
-
-* [🏥 Sobre el Proyecto](#-sobre-el-proyecto)
-¡Claro! Aquí tienes una versión mejorada y decorada del README para tu proyecto **EcosConscientes**, utilizando elementos visuales como badges, emojis, secciones bien estructuradas y enlaces útiles. Esta versión está optimizada para GitHub y sigue las buenas prácticas de documentación.
-
----
-
 # 🌿 EcosConscientes
 
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green.svg)
