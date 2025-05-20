@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batería de Pruebas - Ecos Conscientes</title>
+    <link rel="icon" type="image/svg+xml" href="/EcosConscientes/assets/images/LOGO_fond.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .test-container {
+            display: flex;
+            min-height: calc(100vh - 60px);
+            flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            .test-container {
+                flex-direction: row;
+            }
+        }
+        .sidebar {
+            width: 100%;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        @media (min-width: 768px) {
+            .sidebar {
+                width: 250px;
+                border-right: 1px solid #ddd;
+                border-bottom: none;
+                padding: 20px;
+            }
+        }
+        .sidebar-title {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .test-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        @media (min-width: 768px) {
+            .test-list {
+                flex-direction: column;
+            }
+        }
+        .test-list li {
+            flex: 1 1 calc(50% - 5px);
+            margin: 0;
+        }
+        @media (min-width: 768px) {
+            .test-list li {
+                flex: 1 1 100%;
+                margin-bottom: 10px;
+            }
+        }
+        .test-list a {
+            display: block;
+            padding: 8px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .test-list a:hover {
+            background-color: #e0e0e0;
+        }
+        .test-list a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .test-content {
+            flex-grow: 1;
+            padding: 15px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .test-content {
+                padding: 20px;
+                max-width: 800px;
+            }
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        @media (min-width: 768px) {
+            .options {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 10px;
+            }
+        }
+        .option-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #e8f5e9;
+            display: none;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/EcosConscientes/assets/images/LOGO.svg" alt="Logo Ecos Conscientes" id="logo">
+                <span class="logo-text">Ecos Conscientes</span>
+            </div>
+            <a href="admin-dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+        </nav>
+    </header>
+
+    <main class="test-container">
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Pruebas Disponibles</h2>
+            <ul class="test-list">
+                <li><a href="#estres" class="active">Escala de Estrés Percibido</a></li>
+                <li><a href="#ansiedad">prueba 2</a></li>
+                <li><a href="#depresion">prueba 3</a></li>
+                <li><a href="#autoestima">prueba 4</a></li>
+            </ul>
+        </aside>
+        
+        <div class="test-content">
+            <h1>Escala de Estrés Percibido</h1>
+        <p>Las preguntas en esta escala hacen referencia a tus sentimientos y pensamientos durante el último mes. En cada caso, por favor indica cómo te has sentido o has enfrentado cada situación.</p>
+        
+        <form id="stressForm">
+            <div class="question">
+                <p>1. En el último mes, ¿con qué frecuencia te has sentido afectado por algo que ocurrió inesperadamente?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q1" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q1" value="1">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q1" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q1" value="3">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q1" value="4">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. En el último mes, ¿con qué frecuencia te has sentido incapaz de controlar las cosas importantes en tu vida?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q2" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q2" value="1">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q2" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q2" value="3">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q2" value="4">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. En el último mes, ¿con qué frecuencia te has sentido nervioso o estresado?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q3" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q3" value="1">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q3" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q3" value="3">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q3" value="4">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. En el último mes, ¿con qué frecuencia has manejado con éxito los pequeños problemas irritantes de la vida?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q4" value="4" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q4" value="3">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q4" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q4" value="1">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q4" value="0">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. En el último mes, ¿con qué frecuencia has sentido que has afrontado efectivamente los cambios importantes que han estado ocurriendo en tu vida?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q5" value="4" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q5" value="3">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q5" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q5" value="1">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q5" value="0">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6. En el último mes, ¿con qué frecuencia has estado seguro sobre tu capacidad para manejar tus problemas personales?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q6" value="4" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q6" value="3">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q6" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q6" value="1">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q6" value="0">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. En el último mes, ¿con qué frecuencia has sentido que las cosas van bien?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q7" value="4" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q7" value="3">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q7" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q7" value="1">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q7" value="0">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>8. En el último mes, ¿con qué frecuencia has sentido que no podías afrontar todas las cosas que tenías que hacer?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q8" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q8" value="1">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q8" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q8" value="3">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q8" value="4">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>9. En el último mes, ¿con qué frecuencia has podido controlar las dificultades de tu vida?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q9" value="4" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q9" value="3">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q9" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q9" value="1">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q9" value="0">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10. En el último mes, ¿con qué frecuencia has sentido que tenías todo bajo control?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q10" value="4" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q10" value="3">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q10" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q10" value="1">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q10" value="0">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>11. En el último mes, ¿con qué frecuencia has estado enfadado porque las cosas que te han ocurrido estaban fuera de tu control?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q11" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q11" value="1">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q11" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q11" value="3">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q11" value="4">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>12. En el último mes, ¿con qué frecuencia has pensado sobre las cosas que te faltan por hacer?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q12" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q12" value="1">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q12" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q12" value="3">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q12" value="4">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>13. En el último mes, ¿con qué frecuencia has podido controlar la forma de pasar el tiempo?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q13" value="4" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q13" value="3">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q13" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q13" value="1">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q13" value="0">Muy a menudo</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>14. En el último mes, ¿con qué frecuencia has sentido que las dificultades se acumulan tanto que no puedes superarlas?</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q14" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="q14" value="1">Casi nunca</label>
+                    <label class="option-label"><input type="radio" name="q14" value="2">De vez en cuando</label>
+                    <label class="option-label"><input type="radio" name="q14" value="3">A menudo</label>
+                    <label class="option-label"><input type="radio" name="q14" value="4">Muy a menudo</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Calcular Resultado</button>
+        </form>
+
+        <div id="result" class="result">
+            <h2>Resultado</h2>
+            <p>Tu nivel de estrés percibido es: <span id="stressScore">0</span> puntos</p>
+            <p id="stressLevel"></p>
+        </div>
+
+        <!-- Formulario de Ansiedad -->
+        <form id="ansiedadForm" class="test-form" style="display: none;">
+            <h1>Escala de Ansiedad</h1>
+            <p>Por favor, indica con qué frecuencia has experimentado los siguientes síntomas durante la última semana:</p>
+            
+            <div class="question">
+                <p>1. Me siento más nervioso y ansioso que de costumbre</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="a1" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="a1" value="1">A veces</label>
+                    <label class="option-label"><input type="radio" name="a1" value="2">Con frecuencia</label>
+                    <label class="option-label"><input type="radio" name="a1" value="3">Casi siempre</label>
+                    <label class="option-label"><input type="radio" name="a1" value="4">Siempre</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Calcular Resultado</button>
+
+            <div id="ansiedadResult" class="result">
+                <h2>Resultado</h2>
+                <p>Tu nivel de ansiedad es: <span id="ansiedadScore">0</span> puntos</p>
+                <p id="ansiedadLevel"></p>
+            </div>
+        </form>
+
+        <!-- Formulario de Depresión -->
+        <form id="depresionForm" class="test-form" style="display: none;">
+            <h1>Escala de Depresión</h1>
+            <p>Por favor, indica cómo te has sentido durante las últimas dos semanas:</p>
+            
+            <div class="question">
+                <p>1. Me he sentido triste o decaído la mayor parte del día</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="d1" value="0" required>Nunca</label>
+                    <label class="option-label"><input type="radio" name="d1" value="1">Algunos días</label>
+                    <label class="option-label"><input type="radio" name="d1" value="2">Más de la mitad de los días</label>
+                    <label class="option-label"><input type="radio" name="d1" value="3">Casi todos los días</label>
+                    <label class="option-label"><input type="radio" name="d1" value="4">Todos los días</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Calcular Resultado</button>
+
+            <div id="depresionResult" class="result">
+                <h2>Resultado</h2>
+                <p>Tu nivel de depresión es: <span id="depresionScore">0</span> puntos</p>
+                <p id="depresionLevel"></p>
+            </div>
+        </form>
+
+        <!-- Formulario de Autoestima -->
+        <form id="autoestimaForm" class="test-form" style="display: none;">
+            <h1>Escala de Autoestima</h1>
+            <p>Por favor, indica tu nivel de acuerdo con las siguientes afirmaciones:</p>
+            
+            <div class="question">
+                <p>1. Siento que soy una persona valiosa</p>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="ae1" value="0" required>Totalmente en desacuerdo</label>
+                    <label class="option-label"><input type="radio" name="ae1" value="1">En desacuerdo</label>
+                    <label class="option-label"><input type="radio" name="ae1" value="2">Neutral</label>
+                    <label class="option-label"><input type="radio" name="ae1" value="3">De acuerdo</label>
+                    <label class="option-label"><input type="radio" name="ae1" value="4">Totalmente de acuerdo</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Calcular Resultado</button>
+
+            <div id="autoestimaResult" class="result">
+                <h2>Resultado</h2>
+                <p>Tu nivel de autoestima es: <span id="autoestimaScore">0</span> puntos</p>
+                <p id="autoestimaLevel"></p>
+            </div>
+        </form>
+        </div>
+    </main>
+
+    <script>
+        // Función para cambiar entre pruebas
+        function showTest(testId) {
+            // Ocultar todos los formularios
+            document.querySelectorAll('.test-form').forEach(form => {
+                form.style.display = 'none';
+            });
+            
+            // Mostrar el formulario seleccionado
+            const selectedForm = document.getElementById(testId + 'Form');
+            if (selectedForm) {
+                selectedForm.style.display = 'block';
+            }
+
+            // Actualizar enlaces activos
+            document.querySelectorAll('.test-list a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`a[href="#${testId}"]`).classList.add('active');
+
+            // Ocultar todos los resultados
+            document.querySelectorAll('.result').forEach(result => {
+                result.style.display = 'none';
+            });
+        }
+
+        // Manejador para el formulario de estrés
+        document.getElementById('stressForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let total = 0;
+            for (let i = 1; i <= 14; i++) {
+                const value = parseInt(document.querySelector(`input[name="q${i}"]:checked`).value);
+                total += value;
+            }
+
+            document.getElementById('stressScore').textContent = total;
+            const resultDiv = document.getElementById('result');
+            const stressLevel = document.getElementById('stressLevel');
+            
+            if (total < 20) {
+                stressLevel.textContent = 'Tu nivel de estrés es bajo.';
+            } else if (total <= 25) {
+                stressLevel.textContent = 'Tu nivel de estrés es moderado.';
+            } else {
+                stressLevel.textContent = 'Tu nivel de estrés es elevado.';
+            }
+
+            resultDiv.style.display = 'block';
+        });
+
+        // Manejador para el formulario de ansiedad
+        document.getElementById('ansiedadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const value = parseInt(document.querySelector('input[name="a1"]:checked').value);
+            
+            document.getElementById('ansiedadScore').textContent = value;
+            const resultDiv = document.getElementById('ansiedadResult');
+            const ansiedadLevel = document.getElementById('ansiedadLevel');
+            
+            if (value < 2) {
+                ansiedadLevel.textContent = 'Tu nivel de ansiedad es bajo.';
+            } else if (value <= 3) {
+                ansiedadLevel.textContent = 'Tu nivel de ansiedad es moderado.';
+            } else {
+                ansiedadLevel.textContent = 'Tu nivel de ansiedad es elevado.';
+            }
+
+            resultDiv.style.display = 'block';
+        });
+
+        // Manejador para el formulario de depresión
+        document.getElementById('depresionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const value = parseInt(document.querySelector('input[name="d1"]:checked').value);
+            
+            document.getElementById('depresionScore').textContent = value;
+            const resultDiv = document.getElementById('depresionResult');
+            const depresionLevel = document.getElementById('depresionLevel');
+            
+            if (value < 2) {
+                depresionLevel.textContent = 'Tu nivel de depresión es bajo.';
+            } else if (value <= 3) {
+                depresionLevel.textContent = 'Tu nivel de depresión es moderado.';
+            } else {
+                depresionLevel.textContent = 'Tu nivel de depresión es elevado.';
+            }
+
+            resultDiv.style.display = 'block';
+        });
+
+        // Manejador para el formulario de autoestima
+        document.getElementById('autoestimaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const value = parseInt(document.querySelector('input[name="ae1"]:checked').value);
+            
+            document.getElementById('autoestimaScore').textContent = value;
+            const resultDiv = document.getElementById('autoestimaResult');
+            const autoestimaLevel = document.getElementById('autoestimaLevel');
+            
+            if (value < 2) {
+                autoestimaLevel.textContent = 'Tu nivel de autoestima es bajo.';
+            } else if (value <= 3) {
+                autoestimaLevel.textContent = 'Tu nivel de autoestima es moderado.';
+            } else {
+                autoestimaLevel.textContent = 'Tu nivel de autoestima es alto.';
+            }
+
+            resultDiv.style.display = 'block';
+        });
+
+        // Inicializar la primera prueba
+        window.onload = function() {
+            showTest('estres');
+        };
+
+        // Agregar event listeners para los enlaces de navegación
+        document.querySelectorAll('.test-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const testId = this.getAttribute('href').substring(1);
+                showTest(testId);
+            });
+        });
+    </script>
+
+    <script src="/EcosConscientes/assets/js/auth.js"></script>
+</body>
+</html>

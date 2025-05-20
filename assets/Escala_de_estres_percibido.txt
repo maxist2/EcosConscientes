@@ -1,0 +1,256 @@
+Escala de Estrés Percibido (¿Qué tan estresado estás?)
+Las preguntas en esta escala hacen referencia a tus sentimientos y pensamientos
+durante el último mes. En cada caso, por favor indica con una “X” cómo te has
+sentido o cómo has enfrentado cada situación.
+
+Nunca
+
+Casi
+nunca
+
+De vez
+en
+cuando
+
+A
+menudo
+
+Muy a
+menudo
+
+1. En el último mes, ¿con qué frecuencia te has
+sentido
+afectado
+por
+algo
+que
+ocurrió
+inesperadamente?
+
+0
+
+1
+
+2
+
+3
+
+4
+
+2. En el último mes, ¿con qué frecuencia te has
+sentido incapaz de controlar las cosas importantes
+en tu vida?
+
+0
+
+1
+
+2
+
+3
+
+4
+
+3. En el último mes, ¿con qué frecuencia te has
+sentido nervioso o estresado?
+
+0
+
+1
+
+2
+
+3
+
+4
+
+4. En el último mes, ¿con qué frecuencia has
+manejado con éxito los pequeños problemas
+irritantes de la vida?
+
+4
+
+3
+
+2
+
+1
+
+0
+
+5. En el último mes, ¿con qué frecuencia has sentido
+que has afrontado efectivamente los cambios
+importantes que han estado ocurriendo en tu vida?
+
+4
+
+3
+
+2
+
+1
+
+0
+
+6. En el último mes, ¿con qué frecuencia has estado
+seguro sobre tu capacidad para manejar tus
+problemas personales?
+
+4
+
+3
+
+2
+
+1
+
+0
+
+7. En el último mes, ¿con qué frecuencia has sentido
+que las cosas van bien?
+
+4
+
+3
+
+2
+
+1
+
+0
+
+1
+
+Nunca
+
+Casi
+nunca
+
+De vez
+en
+cuando
+
+A
+menudo
+
+Muy a
+menudo
+
+8. En el último mes, ¿con qué frecuencia has sentido
+que no podías afrontar todas las cosas que tenías
+que hacer?
+
+0
+
+1
+
+2
+
+3
+
+4
+
+9. En el último mes, ¿con qué frecuencia has podido
+controlar las dificultades de tu vida?
+
+4
+
+3
+
+2
+
+1
+
+0
+
+10. En el último mes, ¿con qué frecuencia has
+sentido que tenías todo bajo control?
+
+4
+
+3
+
+2
+
+1
+
+0
+
+11. En el último mes, ¿con qué frecuencia has
+estado enfadado porque las cosas que te han
+ocurrido estaban fuera de tu control?
+
+0
+
+1
+
+2
+
+3
+
+4
+
+12. En el último mes, ¿con qué frecuencia has
+pensado sobre las cosas que te faltan por hacer?
+
+0
+
+1
+
+2
+
+3
+
+4
+
+13. En el último mes, ¿con qué frecuencia has
+podido controlar la forma de pasar el tiempo?
+
+4
+
+3
+
+2
+
+1
+
+0
+
+14. En el último mes, ¿con qué frecuencia has
+sentido que las dificultades se acumulan tanto que
+no puedes superarlas?
+
+0
+
+1
+
+2
+
+3
+
+4
+
+2
+
+Escala de Estrés Percibido (PSS)1
+Esta escala es un instrumento de auto informe que evalúa el nivel de estrés
+percibido durante el último mes, consta de 14 ítems con un formato de respuesta
+de una escala de cinco puntos.
+
+Es importante notar la puntuación para cada respuesta:
+En los ítems 1, 2, 3, 8, 11, 12 y 14 (0 = nunca, 1 = casi nunca, 2 =de vez
+en cuando, 3 = a menudo, 4 = muy a menudo).
+En los ítems 4, 5, 6, 7, 9, 10 y 13 (4 = nunca, 3 = casi nunca, 2 =de vez en
+cuando, 1 = a menudo, 0 = muy a menudo)
+Se suma el puntaje total de los 14 ítems. La puntuación directa obtenida (que va
+de 0 a 56) indica que a una mayor puntuación corresponde un mayor nivel de
+estrés percibido. Se dice que un nivel de estrés moderado fluctúa entre 20 y 25,
+más allá de estos puntajes, el estrés se considera elevado.
+
+1
+
+Remor, E. y Carrobles, J. (2001). Versión Española de la escala de estrés percibido (PSS14): Estudio psicométrico en una muestra VIH+. En Ansiedad y Estrés, 7(2-3), 195-201.
+
+3
+
+
