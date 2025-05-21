@@ -490,6 +490,76 @@
         </div>
     </footer>
 
-    <script src="/EcosConscientes/assets/js/triaje.js"></script>
+    <script>
+        document.getElementById('triajeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Eliminar resultado anterior si existe
+            const resultadoAnterior = document.querySelector('.resultado-triaje');
+            if (resultadoAnterior) {
+                resultadoAnterior.remove();
+            }
+
+            // Contadores para cada nivel de triaje
+            let triajeI = 0;
+            let triajeII = 0;
+            let triajeIII = 0;
+
+            // Contar respuestas positivas para Triaje I
+            for (let i = 1; i <= 8; i++) {
+                const value = document.querySelector(`input[name="triaje1_q${i}"]:checked`).value;
+                if (value === 'si') {
+                    triajeI++;
+                }
+            }
+
+            // Contar respuestas positivas para Triaje II
+            for (let i = 1; i <= 8; i++) {
+                const value = document.querySelector(`input[name="triaje2_q${i}"]:checked`).value;
+                if (value === 'si') {
+                    triajeII++;
+                }
+            }
+
+            // Contar respuestas positivas para Triaje III
+            for (let i = 1; i <= 8; i++) {
+                const value = document.querySelector(`input[name="triaje3_q${i}"]:checked`).value;
+                if (value === 'si') {
+                    triajeIII++;
+                }
+            }
+
+            // Determinar el nivel de triaje
+            let nivelTriaje = '';
+            let descripcion = '';
+
+            if (triajeI >= 1) {
+                nivelTriaje = 'Triaje I - Emergencia';
+                descripcion = 'Requiere atención inmediata. Por favor, contacte con un profesional de salud mental de inmediato.';
+            } else if (triajeII >= 3) {
+                nivelTriaje = 'Triaje II - Urgencia';
+                descripcion = 'Requiere atención en los próximos 15-30 minutos. Se recomienda evaluación profesional pronta.';
+            } else if (triajeIII >= 3) {
+                nivelTriaje = 'Triaje III - Consulta Prioritaria';
+                descripcion = 'Requiere atención en las próximas horas. Se sugiere programar una consulta prioritaria.';
+            } else {
+                nivelTriaje = 'Triaje IV - Consulta Regular';
+                descripcion = 'Puede programar una consulta regular para seguimiento y prevención.';
+            }
+
+            // Mostrar resultados
+            const resultadoHTML = `
+                <div class="resultado-triaje" style="display: block; margin-top: 20px; padding: 20px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <h3 style="color: var(--color-primary); margin-bottom: 10px;">Resultado de la Evaluación</h3>
+                    <p><strong>Nivel de Atención:</strong> ${nivelTriaje}</p>
+                    <p><strong>Recomendación:</strong> ${descripcion}</p>
+                </div>
+            `;
+
+            // Insertar el resultado después del formulario
+            document.getElementById('triajeForm').insertAdjacentHTML('afterend', resultadoHTML);
+        });
+    </script>
+    <script src="/EcosConscientes/assets/js/auth.js"></script>
 </body>
 </html>
