@@ -6,9 +6,12 @@
     <title>Batería de Pruebas - Ecos Conscientes</title>
     <link rel="icon" type="image/svg+xml" href="/EcosConscientes/assets/images/LOGO_fond.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="/EcosConscientes/assets/css/styles.css">
     <style>
         .test-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
             display: flex;
             min-height: calc(100vh - 60px);
             flex-direction: column;
@@ -23,6 +26,7 @@
             background-color: #f1f1f1;
             padding: 15px;
             border-bottom: 1px solid #ddd;
+            border-radius: 10px 10px 0 0;
         }
         @media (min-width: 768px) {
             .sidebar {
@@ -30,12 +34,19 @@
                 border-right: 1px solid #ddd;
                 border-bottom: none;
                 padding: 20px;
+                border-radius: 10px 0 0 10px;
             }
         }
         .sidebar-title {
-            font-size: 1.1em;
+            font-size: 1.2em;
             margin-bottom: 15px;
             color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sidebar-title i {
+            color: #4CAF50;
         }
         .test-list {
             list-style: none;
@@ -60,13 +71,14 @@
             }
         }
         .test-list a {
-            display: block;
-            padding: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
             color: #333;
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
-            text-align: center;
         }
         .test-list a:hover {
             background-color: #e0e0e0;
@@ -77,41 +89,83 @@
         }
         .test-content {
             flex-grow: 1;
-            padding: 15px;
+            background: #ffffff;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
             width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
         }
         @media (min-width: 768px) {
             .test-content {
-                padding: 20px;
+                border-radius: 0 10px 10px 0;
                 max-width: 800px;
             }
         }
-        .question {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f9f9f9;
+        .test-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .question-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .question-item p {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
         }
         .options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-            margin-top: 10px;
+            box-sizing: content-box;
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
         }
-        @media (min-width: 768px) {
+        @media (max-width: 768px) {
             .options {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 10px;
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
-        .option-label {
+        .option {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .option input[type="radio"] {
+            display: none;
+        }
+        .checkmark {
+            
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 24px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            color: transparent;
+            transition: all 0.2s;
+        }
+        .option:hover .checkmark {
+            border-color: #4CAF50;
+        }
+        .option input[type="radio"]:checked + .checkmark {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
         }
         .result {
             margin-top: 20px;
@@ -119,19 +173,31 @@
             border-radius: 8px;
             background-color: #e8f5e9;
             display: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .submit-btn {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
         .submit-btn:hover {
             background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -148,175 +214,175 @@
 
     <main class="test-container">
         <aside class="sidebar">
-            <h2 class="sidebar-title">Pruebas Disponibles</h2>
+            <h2 class="sidebar-title"><i class="fas fa-clipboard-list"></i> Pruebas Disponibles</h2>
             <ul class="test-list">
-                <li><a href="#estres" class="active">Escala de Estrés Percibido</a></li>
-                <li><a href="#ansiedad">prueba 2</a></li>
-                <li><a href="#depresion">prueba 3</a></li>
-                <li><a href="#autoestima">prueba 4</a></li>
+                <li><a href="#estres" class="active"><i class="fas fa-brain"></i> Escala de Estrés Percibido</a></li>
+                <li><a href="#ansiedad"><i class="fas fa-heartbeat"></i> Escala de Ansiedad</a></li>
+                <li><a href="#depresion"><i class="fas fa-cloud-rain"></i> Escala de Depresión</a></li>
+                <li><a href="#autoestima"><i class="fas fa-star"></i> Escala de Autoestima</a></li>
             </ul>
         </aside>
         
-        <div class="test-content">
-            <h1>Escala de Estrés Percibido</h1>
-        <p>Las preguntas en esta escala hacen referencia a tus sentimientos y pensamientos durante el último mes. En cada caso, por favor indica cómo te has sentido o has enfrentado cada situación.</p>
+        <div class="test-content fade-in">
+            <h1><i class="fas fa-brain"></i> Escala de Estrés Percibido</h1>
+        <p class="test-description">Las preguntas en esta escala hacen referencia a tus sentimientos y pensamientos durante el último mes. En cada caso, por favor indica cómo te has sentido o has enfrentado cada situación.</p>
         
         <form id="stressForm">
-            <div class="question">
+            <div class="question-item">
                 <p>1. En el último mes, ¿con qué frecuencia te has sentido afectado por algo que ocurrió inesperadamente?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q1" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q1" value="1">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q1" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q1" value="3">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q1" value="4">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q1" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q1" value="1"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q1" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q1" value="3"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q1" value="4"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>2. En el último mes, ¿con qué frecuencia te has sentido incapaz de controlar las cosas importantes en tu vida?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q2" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q2" value="1">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q2" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q2" value="3">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q2" value="4">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q2" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q2" value="1"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q2" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q2" value="3"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q2" value="4"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>3. En el último mes, ¿con qué frecuencia te has sentido nervioso o estresado?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q3" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q3" value="1">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q3" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q3" value="3">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q3" value="4">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q3" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q3" value="1"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q3" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q3" value="3"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q3" value="4"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>4. En el último mes, ¿con qué frecuencia has manejado con éxito los pequeños problemas irritantes de la vida?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q4" value="4" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q4" value="3">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q4" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q4" value="1">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q4" value="0">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q4" value="4" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q4" value="3"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q4" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q4" value="1"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q4" value="0"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>5. En el último mes, ¿con qué frecuencia has sentido que has afrontado efectivamente los cambios importantes que han estado ocurriendo en tu vida?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q5" value="4" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q5" value="3">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q5" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q5" value="1">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q5" value="0">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q5" value="4" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q5" value="3"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q5" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q5" value="1"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q5" value="0"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>6. En el último mes, ¿con qué frecuencia has estado seguro sobre tu capacidad para manejar tus problemas personales?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q6" value="4" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q6" value="3">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q6" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q6" value="1">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q6" value="0">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q6" value="4" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q6" value="3"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q6" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q6" value="1"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q6" value="0"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>7. En el último mes, ¿con qué frecuencia has sentido que las cosas van bien?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q7" value="4" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q7" value="3">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q7" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q7" value="1">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q7" value="0">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q7" value="4" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q7" value="3"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q7" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q7" value="1"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q7" value="0"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>8. En el último mes, ¿con qué frecuencia has sentido que no podías afrontar todas las cosas que tenías que hacer?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q8" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q8" value="1">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q8" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q8" value="3">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q8" value="4">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q8" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q8" value="1"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q8" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q8" value="3"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q8" value="4"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>9. En el último mes, ¿con qué frecuencia has podido controlar las dificultades de tu vida?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q9" value="4" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q9" value="3">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q9" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q9" value="1">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q9" value="0">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q9" value="4" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q9" value="3"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q9" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q9" value="1"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q9" value="0"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>10. En el último mes, ¿con qué frecuencia has sentido que tenías todo bajo control?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q10" value="4" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q10" value="3">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q10" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q10" value="1">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q10" value="0">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q10" value="4" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q10" value="3"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q10" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q10" value="1"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q10" value="0"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>11. En el último mes, ¿con qué frecuencia has estado enfadado porque las cosas que te han ocurrido estaban fuera de tu control?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q11" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q11" value="1">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q11" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q11" value="3">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q11" value="4">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q11" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q11" value="1"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q11" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q11" value="3"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q11" value="4"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>12. En el último mes, ¿con qué frecuencia has pensado sobre las cosas que te faltan por hacer?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q12" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q12" value="1">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q12" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q12" value="3">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q12" value="4">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q12" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q12" value="1"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q12" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q12" value="3"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q12" value="4"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>13. En el último mes, ¿con qué frecuencia has podido controlar la forma de pasar el tiempo?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q13" value="4" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q13" value="3">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q13" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q13" value="1">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q13" value="0">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q13" value="4" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q13" value="3"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q13" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q13" value="1"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q13" value="0"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <div class="question">
+            <div class="question-item">
                 <p>14. En el último mes, ¿con qué frecuencia has sentido que las dificultades se acumulan tanto que no puedes superarlas?</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="q14" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="q14" value="1">Casi nunca</label>
-                    <label class="option-label"><input type="radio" name="q14" value="2">De vez en cuando</label>
-                    <label class="option-label"><input type="radio" name="q14" value="3">A menudo</label>
-                    <label class="option-label"><input type="radio" name="q14" value="4">Muy a menudo</label>
+                    <label class="option"><input type="radio" name="q14" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="q14" value="1"><span class="checkmark">✓</span> Casi nunca</label>
+                    <label class="option"><input type="radio" name="q14" value="2"><span class="checkmark">✓</span> De vez en cuando</label>
+                    <label class="option"><input type="radio" name="q14" value="3"><span class="checkmark">✓</span> A menudo</label>
+                    <label class="option"><input type="radio" name="q14" value="4"><span class="checkmark">✓</span> Muy a menudo</label>
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">Calcular Resultado</button>
+            <button type="submit" class="submit-btn"><i class="fas fa-calculator"></i> Calcular Resultado</button>
         </form>
 
         <div id="result" class="result">
@@ -327,21 +393,21 @@
 
         <!-- Formulario de Ansiedad -->
         <form id="ansiedadForm" class="test-form" style="display: none;">
-            <h1>Escala de Ansiedad</h1>
-            <p>Por favor, indica con qué frecuencia has experimentado los siguientes síntomas durante la última semana:</p>
+            <h1><i class="fas fa-heartbeat"></i> Escala de Ansiedad</h1>
+            <p class="test-description">Por favor, indica con qué frecuencia has experimentado los siguientes síntomas durante la última semana:</p>
             
-            <div class="question">
+            <div class="question-item">
                 <p>1. Me siento más nervioso y ansioso que de costumbre</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="a1" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="a1" value="1">A veces</label>
-                    <label class="option-label"><input type="radio" name="a1" value="2">Con frecuencia</label>
-                    <label class="option-label"><input type="radio" name="a1" value="3">Casi siempre</label>
-                    <label class="option-label"><input type="radio" name="a1" value="4">Siempre</label>
+                    <label class="option"><input type="radio" name="a1" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="a1" value="1"><span class="checkmark">✓</span> A veces</label>
+                    <label class="option"><input type="radio" name="a1" value="2"><span class="checkmark">✓</span> Con frecuencia</label>
+                    <label class="option"><input type="radio" name="a1" value="3"><span class="checkmark">✓</span> Casi siempre</label>
+                    <label class="option"><input type="radio" name="a1" value="4"><span class="checkmark">✓</span> Siempre</label>
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">Calcular Resultado</button>
+            <button type="submit" class="submit-btn"><i class="fas fa-calculator"></i> Calcular Resultado</button>
 
             <div id="ansiedadResult" class="result">
                 <h2>Resultado</h2>
@@ -352,21 +418,21 @@
 
         <!-- Formulario de Depresión -->
         <form id="depresionForm" class="test-form" style="display: none;">
-            <h1>Escala de Depresión</h1>
-            <p>Por favor, indica cómo te has sentido durante las últimas dos semanas:</p>
+            <h1><i class="fas fa-cloud-rain"></i> Escala de Depresión</h1>
+            <p class="test-description">Por favor, indica cómo te has sentido durante las últimas dos semanas:</p>
             
-            <div class="question">
+            <div class="question-item">
                 <p>1. Me he sentido triste o decaído la mayor parte del día</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="d1" value="0" required>Nunca</label>
-                    <label class="option-label"><input type="radio" name="d1" value="1">Algunos días</label>
-                    <label class="option-label"><input type="radio" name="d1" value="2">Más de la mitad de los días</label>
-                    <label class="option-label"><input type="radio" name="d1" value="3">Casi todos los días</label>
-                    <label class="option-label"><input type="radio" name="d1" value="4">Todos los días</label>
+                    <label class="option"><input type="radio" name="d1" value="0" required><span class="checkmark">✓</span> Nunca</label>
+                    <label class="option"><input type="radio" name="d1" value="1"><span class="checkmark">✓</span> Algunos días</label>
+                    <label class="option"><input type="radio" name="d1" value="2"><span class="checkmark">✓</span> Más de la mitad de los días</label>
+                    <label class="option"><input type="radio" name="d1" value="3"><span class="checkmark">✓</span> Casi todos los días</label>
+                    <label class="option"><input type="radio" name="d1" value="4"><span class="checkmark">✓</span> Todos los días</label>
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">Calcular Resultado</button>
+            <button type="submit" class="submit-btn"><i class="fas fa-calculator"></i> Calcular Resultado</button>
 
             <div id="depresionResult" class="result">
                 <h2>Resultado</h2>
@@ -377,21 +443,21 @@
 
         <!-- Formulario de Autoestima -->
         <form id="autoestimaForm" class="test-form" style="display: none;">
-            <h1>Escala de Autoestima</h1>
-            <p>Por favor, indica tu nivel de acuerdo con las siguientes afirmaciones:</p>
+            <h1><i class="fas fa-star"></i> Escala de Autoestima</h1>
+            <p class="test-description">Por favor, indica tu nivel de acuerdo con las siguientes afirmaciones:</p>
             
-            <div class="question">
+            <div class="question-item">
                 <p>1. Siento que soy una persona valiosa</p>
                 <div class="options">
-                    <label class="option-label"><input type="radio" name="ae1" value="0" required>Totalmente en desacuerdo</label>
-                    <label class="option-label"><input type="radio" name="ae1" value="1">En desacuerdo</label>
-                    <label class="option-label"><input type="radio" name="ae1" value="2">Neutral</label>
-                    <label class="option-label"><input type="radio" name="ae1" value="3">De acuerdo</label>
-                    <label class="option-label"><input type="radio" name="ae1" value="4">Totalmente de acuerdo</label>
+                    <label class="option"><input type="radio" name="ae1" value="0" required><span class="checkmark">✓</span> Totalmente en desacuerdo</label>
+                    <label class="option"><input type="radio" name="ae1" value="1"><span class="checkmark">✓</span> En desacuerdo</label>
+                    <label class="option"><input type="radio" name="ae1" value="2"><span class="checkmark">✓</span> Neutral</label>
+                    <label class="option"><input type="radio" name="ae1" value="3"><span class="checkmark">✓</span> De acuerdo</label>
+                    <label class="option"><input type="radio" name="ae1" value="4"><span class="checkmark">✓</span> Totalmente de acuerdo</label>
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">Calcular Resultado</button>
+            <button type="submit" class="submit-btn"><i class="fas fa-calculator"></i> Calcular Resultado</button>
 
             <div id="autoestimaResult" class="result">
                 <h2>Resultado</h2>
